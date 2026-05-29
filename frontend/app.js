@@ -46,16 +46,21 @@ function signup() {
 }
 
 // LOGIN
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+function checkAdmin(userEmail) {
+    const adminEmail = "yt834434@gmail.com"; // သင်ပေးထားတဲ့ Admin Email
+    const adminSection = document.getElementById("adminSection");
 
-  auth.signInWithEmailAndPassword(email, password)
-    .then(() => {
-      alert("Login successful!");
-    })
-    .catch(err => alert(err.message));
-}
+    if (userEmail === adminEmail) {
+        if (adminSection) {
+            adminSection.style.display = "block"; // Admin ဆိုရင် ပေါ်စေရမည်
+        }
+    } else {
+        if (adminSection) {
+            adminSection.style.display = "none"; // User ဆိုရင် ဖျောက်ထားမည်
+        }
+    }
+    }
+          
 
 // LOAD COINS
 function loadCoins(uid) {
