@@ -280,19 +280,22 @@ function loadWithdrawRequests() {
 }
 
 // ADMIN APPROVE (BACKEND SERVER ROUTE)
+// app.js ရှိ approveWithdraw function ကို ဒီအတိုင်း ပြင်ပေးပါ
 function approveWithdraw(requestId) {
-  fetch("https://game-earn-black.vercel.app/approve-withdraw", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ requestId: requestId })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      alert("Request approved successfully!");
-    } else {
-      alert("Error: " + data.error);
-    }
-  })
-  .catch(err => alert("Server error: " + err.message));
+    fetch("https://game-earn-black.vercel.app/approve-withdraw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // အရေးကြီးချက် - ဒီနေရာမှာ requestId ကို object ပုံစံနဲ့ ပို့ရပါမယ်
+        body: JSON.stringify({ requestId: requestId }) 
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Request approved successfully!");
+        } else {
+            alert("Error: " + data.error);
+        }
+    })
+    .catch(err => alert("Server error: " + err.message));
 }
+
