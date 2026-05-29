@@ -276,7 +276,7 @@ function loadWithdrawRequests() {
 
 // ADMIN APPROVE (BACKEND SERVER ROUTE)
 function approveWithdraw(requestId) {
-  fetch("http://localhost:3000/approve-withdraw", {
+  fetch("https://game-earn-black.vercel.app/approve-withdraw", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ requestId: requestId })
