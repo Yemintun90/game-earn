@@ -1,0 +1,21 @@
+{
+  "short_name": "GameEarn",
+  "name": "Game Earn Crypto Web App",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "3135715.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#1a1a2e",
+  "theme_color": "#162447",
+  "display": "standalone",
+  "orientation": "portrait"
+}

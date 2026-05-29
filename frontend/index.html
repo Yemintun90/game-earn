@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Earn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎮 Play & Earn Crypto</h1>
+
+    <div class="wallet-section">
+      <button id="connectWalletBtn" onclick="connectWallet()">🦊 Connect MetaMask</button>
+      <p>Wallet: <span id="walletAddress">Not connected</span></p>
+    </div>
+
+    <div id="authSection" class="card">
+      <h3>Login / Signup</h3>
+      <input type="email" id="email" placeholder="Email"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button onclick="login()">Login</button>
+      <button onclick="signup()">Signup</button>
+    </div>
+
+    <div class="card">
+      <h3>Your Balance</h3>
+      <p>💰 <span id="coins">0</span> Coins</p>
+      <button id="playBtn" onclick="addCoin()">🎯 Play +10 Coins</button>
+    </div>
+
+    <div class="card">
+      <h3>🎡 Lucky Spin Wheel</h3>
+      <div class="wheel-container">
+        <div class="wheel">⚡ SPIN ⚡</div>
+      </div>
+      <button id="spinBtn" onclick="spinReward()">Spin Wheel</button>
+      <p id="spinResult"></p>
+    </div>
+
+    <div class="card">
+      <h3>📺 Watch Ad & Earn</h3>
+      <button onclick="watchAd(event)">Watch Video Ad</button>
+      <p id="adStatus">Click button to watch</p>
+    </div>
+
+    <div class="card">
+      <h3>💸 Withdraw Crypto</h3>
+      <input type="number" id="amount" placeholder="Amount of coins"><br>
+      <button onclick="withdraw()">Submit Withdraw Request</button>
+      <p id="status"></p>
+    </div>
+
+    <div class="card">
+      <h3>🏆 Top 10 Leaderboard</h3>
+      <div id="leaderboard">Loading...</div>
+    </div>
+
+    <div id="adminSection" class="card" style="display:none; border: 2px solid red;">
+      <h2>👨‍💻 Admin Dashboard</h2>
+      <div id="withdrawRequests">Loading requests...</div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
