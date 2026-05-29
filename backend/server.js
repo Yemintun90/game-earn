@@ -1,10 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const admin = require("firebase-admin");
+const express = require('express');
+const cors = require('cors'); // ၁။ ဒီမှာ cors ကို ခေါ်ပါ
+const admin = require('firebase-admin');
 require("dotenv").config();
 
-// အခု folder အသစ်ထဲမှာ serviceAccountKey.json ရှိနေတဲ့လမ်းကြောင်း
-const serviceAccount = require("./serviceAccountKey.json");
+const serviceAccount = require('./serviceAccountKey.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -13,13 +12,17 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 
-app.use(cors());
+// ၂။ ဒီနေရာမှာ cors ကို enable လုပ်ပေးပါ (အရေးကြီးဆုံးနေရာပါ)
+app.use(cors({
+  origin: '*', 
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
-// SERVER TEST ROUTE
-app.get("/", (req, res) => {
-  res.send("Game Earn Server Running ✅");
-});
+// ... ကျန်တဲ့ သင့်ရဲ့ route တွေ (approve-withdraw စသည်ဖြင့်) ကို ဒီအောက်မှာ ဆက်ရေးပါ ...
+
 
 // APPROVE WITHDRAW (ငွေထုတ်ရန် အတည်ပြုခြင်း)
 app.post("/approve-withdraw", async (req, res) => {
